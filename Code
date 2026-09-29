@@ -1,0 +1,33 @@
+total = 0.0
+expenses = []
+
+print("=== Expense Tracker ===")
+print("Enter each expense amount. Type 'done' when you have finished.")
+
+while True:
+    entry = input("Expense amount: ").strip()
+
+    if entry.lower() == "done":
+        break
+
+    try:
+        amount = float(entry)
+        if amount < 0:
+            print("Please enter a non-negative amount.")
+            continue
+    except ValueError:
+        print("Invalid amount. Please enter a number or 'done'.")
+        continue
+
+    expenses.append(amount)
+    total = total + amount
+    print(f"Added: {amount:.2f} | Running total: {total:.2f}")
+
+print("\n=== Expense Summary ===")
+if expenses:
+    print(f"Number of expenses: {len(expenses)}")
+    print(f"Total Spent: {total:.2f}")
+else:
+    print("No expenses were entered.")
+    print("Total Spent: 0.00")
+
